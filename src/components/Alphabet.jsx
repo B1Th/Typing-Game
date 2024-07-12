@@ -1,7 +1,12 @@
-import React from "react";
-
-const Alphabet = () => {
-  return <div>Alphabet</div>;
+const Alphabet = ({ word }) => {
+  return (
+    <li
+      className={
+        word.status === true ? "true" : word.status === false ? "false" : ""
+      }
+    >
+      {word.value}
+    </li>
+  );
 };
-
 export default Alphabet;
