@@ -53,6 +53,7 @@ function App() {
 
   return (
     <>
+      <div className="bgImg"></div>
       <div className="App">{showMain}</div>
     </>
   );
