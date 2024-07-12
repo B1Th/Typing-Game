@@ -2,14 +2,11 @@ const Home = ({ onGame }) => {
   return (
     <div className="home">
       <div className="title">
-        TYPING QUEST: <p>An Adventure Awaits</p>
+        TYPING QUEST: <p>AN ADVENTURE AWAITS</p>
       </div>
       <br />
-      <div className="author">
-        Coding & <br />
-        Design by Bhuwan Thapa
-      </div>
       <div className="buttonContainer">
+        <br />
         <button onClick={() => onGame("playing")} className="btnPlay">
           P L A Y
           <div id="clip">
