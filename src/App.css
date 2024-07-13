@@ -270,7 +270,6 @@ body {
   gap: 10px;
   opacity: 0;
   animation: showHome 1s ease-in-out 1 forwards;
-  border: 1px solid white;
 }
 .playing .list {
   padding: 50px;

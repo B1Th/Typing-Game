@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-const PlayGame = ({ onGame, onChangeScore }) => {
+
+const PlayGame = ({ onGame, onChangeScore, timeLeft, startTimer }) => {
   const [defaultData] = useState(
     "In a magical forest, a wise giraffe named Gerry and his adventurous friend, an elephant named Ellie, set off to find a legendary unicorn. They traveled through a jungle and across a vast desert, encountering a phoenix, a griffin, and ancient pyramids guarded by a brave knight and a mystical wizard. They navigated with a broken computer, a sticky keyboard, and a dusty mouse they found in an old castle. After a fierce thunder and lightning storm, they saw a beautiful rainbow and a streaking comet in the sky. Their journey led them to a hidden oasis where they found a singing mermaid by a crystal-clear river. In the end, they returned home with memories of their incredible adventure, eager to share their tales of galaxies, dragons, and the wonderful creatures they met along the way."
   );
@@ -8,6 +9,8 @@ const PlayGame = ({ onGame, onChangeScore }) => {
     value: "",
     position: 0,
   });
+  const [hasStartedTyping, setHasStartedTyping] = useState(false);
+
   useEffect(() => {
     const addWord = (quantityAdd = 20) => {
       const arrayDefaultData = defaultData.split(" ");
@@ -31,14 +34,20 @@ const PlayGame = ({ onGame, onChangeScore }) => {
       setTextTyping({ ...textTyping, position: 0 });
     }
   }, [textTyping.position]);
+
   const handleChangeTyping = (e) => {
     const valueInput = e.target.value;
+    if (!hasStartedTyping) {
+      setHasStartedTyping(true);
+      startTimer();
+    }
     if (!valueInput.includes(" ")) {
       setTextTyping({ ...textTyping, value: valueInput });
     } else if (textTyping.value !== "") {
       checkResult();
     }
   };
+
   const checkResult = () => {
     const dataCheck = dataTyping;
     if (textTyping.value === dataCheck[textTyping.position].value) {
@@ -51,6 +60,7 @@ const PlayGame = ({ onGame, onChangeScore }) => {
     setDataTyping(dataCheck);
     setTextTyping({ value: "", position: textTyping.position + 1 });
   };
+
   return (
     <div className="playing">
       <ul className="list">
@@ -75,9 +85,12 @@ const PlayGame = ({ onGame, onChangeScore }) => {
           autoFocus
           value={textTyping.value}
           onChange={handleChangeTyping}
+          placeholder="Start typing to begin the game..."
         />
       </div>
+      <div>Time left: {timeLeft} seconds</div>
     </div>
   );
 };
+
 export default PlayGame;
