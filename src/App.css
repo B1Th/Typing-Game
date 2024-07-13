@@ -9,9 +9,11 @@ body {
 
 .bgImg {
   height: 100vh;
+  width: 100%;
   background-image: url("/hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   animation: zoomBackground 20s infinite;
   position: relative;
   z-index: -1;
@@ -268,6 +270,7 @@ body {
   gap: 10px;
   opacity: 0;
   animation: showHome 1s ease-in-out 1 forwards;
+  border: 1px solid white;
 }
 .playing .list {
   padding: 50px;
@@ -281,6 +284,7 @@ body {
   font-size: x-large;
   padding: 10px;
   text-shadow: 0 2px 2px #0009;
+  font-family: "Roboto", sans-serif;
 }
 
 .playing .inputForm input {
@@ -341,4 +345,17 @@ body {
 }
 .endGame .result .number {
   font-size: 50px;
+}
+
+@media (max-width: 768px) {
+  .playing .list {
+    padding: 30px;
+  }
+  .playing .list li {
+    font-size: 18px;
+    padding: 8px;
+  }
+  .playing .inputForm input {
+    font-size: 18px;
+  }
 }

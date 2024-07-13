@@ -12,7 +12,7 @@ const EndGame = ({ score, onGame }) => {
         </div>
       </div>
       <button onClick={() => onGame("playing")} className="btnPlay">
-        Play Game Again
+        Play Again
       </button>
     </div>
   );
